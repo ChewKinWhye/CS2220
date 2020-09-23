@@ -13,6 +13,7 @@
 ## About The Project
 
 This project contains the code for the assignments of CS2220, Introduction to Computational Biology.
+
 In assignment 1, we learn to extract data from fasta files, extract features (3-grams), do feature selection using Chi-Square, and train and evaluate decision trees and support vector machine models.
 
 <!-- GETTING STARTED -->
