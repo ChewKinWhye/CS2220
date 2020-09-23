@@ -27,7 +27,7 @@ Datasets required to run this code in contained in this repo
 
 1. Clone the repo
 ```sh
-git clone https://github.com/ChewKinWhye/nanoVAE.git
+git clone https://github.com/ChewKinWhye/CS2220.git
 ```
 2. Create venv
 ```sh
