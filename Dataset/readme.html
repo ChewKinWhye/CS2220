@@ -1,0 +1,72 @@
+
+<h2>Translation Initiation Sites Data Set</h2>
+
+Here is the TIS dataset to be used in Assignment #1.
+<p>
+
+<b>Originally published in:</b>
+
+<a href=http://www.cbs.dtu.dk/~gorm/papers/ismb97.pdf>
+"Neural Network Prediction of Translation Initiation Sites in Eukaryotes:
+Perspectives for EST and Genome Analysis"</a>. 
+Proceedings of 5th International Conference on
+Intelligent Systems for Molecular Biology, 226-233, 1997.
+<p>
+ 
+<b> # Instances:</b> 13375
+<p>
+ 
+<b> # Attributes:</b> 927
+<p>
+ 
+<b> # Classes:</b> 2 (positive v.s. negative)
+<p>
+ 
+<b> Raw Data Source:</b> 
+<a href=vertebrates.txt>Annotated vertebrates sequences</a><br>
+<b> Extracted Samples:</b> 
+<a href=pos.fasta>Positive samples</a>, 
+<a href=neg.fasta>negative samples</a><br>
+<b> ARFF-Formatted:</b>
+<a href=Inframe_3_Gram.arff>In-frame 3-grams</a>
+<p>
+
+ 
+<b> Description:</b>
+
+The original data consists of a selected set of vertebrates
+genomic sequences extracted from GenBank.
+It is used to find the Translation Initiation Site (TIS),
+at which the translation from mRNA to proteins initiates.
+Since only those sequences with an annotated TIS are included
+in the data set, a classification model can be built to
+distinguish true (positive) TIS and false (negative) TIS.
+As the data set is processed DNA, the TIS site is ATG. 
+In total, there are 3312 sequences (i.e. 3312 true ATGs).
+<p>
+
+There are various ways to extract sequences and build feature space. 
+Here, we provide one approach: a window centered at each ATG,
+with both upstream and downstream are 99 bases long,
+is generated from each ATG. So there are 201 bases indicated by 
+A, T, C and G in each window. If the portion of sequence
+is shorter than the window end, those bases are denoted by "N".
+With this strategy, we got 3312 true ATGs, 10191 false ATGs.
+For classification, a feature vector is generated for each such
+ATG segment using up-stream in-frame 3-grams and down-stream
+in-frame 3-grams.
+<p>
+
+
+<p>
+<p>
+
+
+<hr>
+<p>
+Adapted from the Kent Ridge Biomedical Data Set Repository
+created by Huiqing Liu and Jinyan Li. 
+The ATG segment extraction and feature vector generation 
+were done by Chuan Hock Koh. -Limsoon, 14/8/2017
+<p>
+
