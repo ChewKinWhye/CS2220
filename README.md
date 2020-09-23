@@ -32,7 +32,7 @@ git clone https://github.com/ChewKinWhye/CS2220.git
 ```
 2. Create venv
 ```sh
-cd nanoVAE
+cd CS2220
 python3 -m venv CS2220_env
 source CS2220_env/bin/activate 
 ```
