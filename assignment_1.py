@@ -1,5 +1,5 @@
-from utils.data import load_fast_data, raw_to_pos_fast, raw_to_neg_fast, in_frame_three_gram, extract_arff_data
-from utils.evaluate import evaluation_metrics
+from utils.assignment1.data import extract_arff_data
+from utils.assignment1.evaluate import evaluation_metrics_binary
 
 from sklearn import tree, svm
 from sklearn.feature_selection import chi2
@@ -20,7 +20,7 @@ if __name__ == "__main__":
         decision_tree = tree.DecisionTreeClassifier()
         decision_tree.fit(x_train, y_train)
         y_predictions = decision_tree.predict(x_test)
-        sensitivity, precision, accuracy = evaluation_metrics(y_test, y_predictions)
+        sensitivity, precision, accuracy = evaluation_metrics_binary(y_test, y_predictions)
 
         decision_tree_sensitivity += sensitivity
         decision_tree_precision += precision
@@ -35,7 +35,7 @@ if __name__ == "__main__":
         svm_model = svm.SVC()
         svm_model.fit(x_train_svm, y_train)
         y_predictions = svm_model.predict(x_test_svm)
-        sensitivity, precision, accuracy = evaluation_metrics(y_test, y_predictions)
+        sensitivity, precision, accuracy = evaluation_metrics_binary(y_test, y_predictions)
         svm_tree_sensitivity += sensitivity
         svm_tree_precision += precision
         svm_tree_accuracy += accuracy
