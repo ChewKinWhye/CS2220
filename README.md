@@ -12,8 +12,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project contains the code for the assignments of CS2220, Introduction to Computational Biology
-In assignment 1, we learn to extract data from fasta files, extract features (3-grams), do feature selection using Chi-Square, and train and evaluate decision trees and support vector machine models.
+This project contains the code for the assignments of CS2220, Introduction to Computational Biology.
+
+In assignment 1, we use the RNA sequenced data, in the form of fasta files, and use it to predict the translation initiation sites of mRNA.
+
+In assignment 2, we use the data from the Affymetrix GeneChip, which shows us the levels of the gene expression, and use it for childhood acute lymphoblastic leukemia subtype diagnosis. 
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -31,7 +34,7 @@ git clone https://github.com/ChewKinWhye/CS2220.git
 ```
 2. Create venv
 ```sh
-cd nanoVAE
+cd CS2220
 python3 -m venv CS2220_env
 source CS2220_env/bin/activate 
 ```
