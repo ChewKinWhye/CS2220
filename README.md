@@ -52,6 +52,11 @@ Assignment 1
 ```sh
 python assignment_1.py
 ```
+Assignment 2
+
+```sh
+python assignment_2.py
+```
 
 <!-- CONTACT -->
 ## Contact
