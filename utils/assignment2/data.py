@@ -6,10 +6,12 @@ import csv
 
 def count_ALL_subtype(label_file):
     df = pd.read_excel(label_file)
-    count = 0
+    count = {}
     for _, row in df.iterrows():
-        if row['Coding'] == "T-ALL":
-            count += 1
+        if row['Coding'] in count:
+            count[row['Coding']] += 1
+        else:
+            count[row['Coding']] = 1
     return count
 
 
@@ -66,10 +68,9 @@ def clean_and_merge(file_path_data, file_path_label, common_genes, output_filena
                     output_row[idx] = row_array[4]
         output_row = list(output_row)
         row_label = list(labels.loc[labels["Chip"] == file[:-4]]["Coding"])
-        row_label = [1 if label == "T-ALL" else 0 for label in row_label]
         output_data.append(output_row + row_label)
     with open(output_filename, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(output_data)
     output_data = np.array(output_data)
-    return output_data[1:, :-1].astype(np.float), output_data[1:, -1].astype(np.float)
+    return output_data[1:, :-1].astype(np.float), output_data[1:, -1]

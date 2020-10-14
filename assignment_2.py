@@ -11,8 +11,11 @@ test_label_file_path = os.path.join("Dataset", "Assignment2", "testing", "testse
 train_data_directory = os.path.join("Dataset", "Assignment2", "training", "trainset10-02-01")
 test_data_directory = os.path.join("Dataset", "Assignment2", "testing", "testset10-02-01")
 
-print(f"Number of ALL-subtype training samples: {count_ALL_subtype(train_label_file_path)}")
-print(f"Number of ALL-subtype test samples: {count_ALL_subtype(test_label_file_path)}")
+train_ALL_count = count_ALL_subtype(train_label_file_path)
+test_ALL_count = count_ALL_subtype(test_label_file_path)
+
+print(f"Number of ALL subtype training samples: {train_ALL_count}")
+print(f"Number of ALL subtype test samples: {test_ALL_count}")
 
 total_gene_count = []
 total_gene_count.extend(count_genes(train_data_directory))
@@ -51,10 +54,18 @@ print(f"Shape of feature-selected training data {train_x.shape}")
 decision_tree = tree.DecisionTreeClassifier()
 decision_tree.fit(train_x, train_y)
 y_predictions = decision_tree.predict(test_x)
-print(f"Decision Tree confusion matrix: {confusion_matrix(test_y, y_predictions)}")
-print(f"Decision Tree accuracy: {accuracy_score(test_y, y_predictions)}")
+print(f"Confusion matrix format: {list(train_ALL_count.keys())}")
+print(f"Decision Tree test-confusion matrix: {confusion_matrix(test_y, y_predictions, labels=list(train_ALL_count.keys()))}")
+print(f"Decision Tree test-accuracy: {accuracy_score(test_y, y_predictions)}")
+y_predictions = decision_tree.predict(train_x)
+print(f"Decision Tree train-accuracy: {accuracy_score(train_y, y_predictions)}")
+
 svm_model = svm.SVC()
 svm_model.fit(train_x, train_y)
 y_predictions = svm_model.predict(test_x)
-print(f"SVM confusion matrix: {confusion_matrix(test_y, y_predictions)}")
-print(f"SVM accuracy: {accuracy_score(test_y, y_predictions)}")
+print(f"SVM test-confusion matrix: {confusion_matrix(test_y, y_predictions, labels=list(train_ALL_count.keys()))}")
+print(f"SVM test-accuracy: {accuracy_score(test_y, y_predictions)}")
+y_predictions = svm_model.predict(train_x)
+print(f"SVM train-accuracy: {accuracy_score(train_y, y_predictions)}")
+
+
